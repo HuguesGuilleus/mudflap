@@ -1,0 +1,25 @@
+{
+	"manifest_version": 2,
+	"name": "Mudflap",
+	"description": "Enregistre le texte de page web",
+	"version": "0.1",
+
+	"icons": {
+		"96": "/icons/icon.svg"
+	},
+	"background": {
+		"scripts": ["/back.js"]
+	},
+
+	"page_action": {
+		"default_icon": "/icons/icon.svg",
+		"default_title": "Ajouter à la lecture",
+		"pinned":true
+	},
+
+	"permissions":[
+		"tabs",
+		"http://*/*",
+		"https://*/*"
+	]
+}
