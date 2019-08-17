@@ -14,21 +14,6 @@ var store = null ;
 	openning.onsuccess = ()=>{
 		db = openning.result ;
 		go()
-
-		// store.transaction.oncomplete = (event)=>{
-		// 	console.log(event);
-		// 	list = db.transaction("list", "readwrite").objectStore("list");
-		// 	list.add({
-		// 		newspaper:"lemonde",
-		// 		text:"text ... 1",
-		// 		title:"C'est la merde",
-		// 	})
-		// 	list.add({
-		// 		newspaper:"lemonde",
-		// 		text:"text ... 2",
-		// 		title:"Crise économique ...",
-		// 	})
-		// };
 	}
 })();
 
