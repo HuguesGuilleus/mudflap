@@ -12,6 +12,7 @@
 	},
 
 	"page_action": {
+		"browser_style": true,
 		"default_icon": "/icons/icon.svg",
 		"default_title": "Ajouter à la lecture",
 		"pinned":true

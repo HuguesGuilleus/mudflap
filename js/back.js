@@ -16,6 +16,7 @@ browser.pageAction.onClicked.addListener(async tab=>{
 		let _ = await browser.tabs.toggleReaderMode(tab.id);
 	}
 	new Page(tab)
+	popup(tab)
 })
 
 // get the tab text title ... and store in indexDB
@@ -45,14 +46,17 @@ class Page {
 	}
 	save() {
 		var bib = "bib"+window.localStorage.getItem("lastBib");
-		console.log("bib:",bib);//////////////////////////
-		var tra = db.transaction(bib,"readwrite");
-		tra.oncomplete = event=>{
-			console.log(bib, "complete");
-		}
-		tra.objectStore(bib).add(this);
-		console.log("save ok");
+		db.transaction(bib,"readwrite").objectStore(bib).add(this);
 	}
+}
+
+/// Open the popup add.html for display message
+function popup(tab) {
+	browser.pageAction.setPopup({
+		popup:"/pages/add.html",
+		tabId:tab.id,
+	});
+	browser.pageAction.openPopup()
 }
 
 // Storage
