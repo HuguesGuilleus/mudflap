@@ -5,7 +5,6 @@
 import * as _zip from "/jszip/jszip.js"
 
 (function(){
-	// download
 	document.getElementById("download").addEventListener("click",async()=>{
 		var zip = new JSZip();
 		var listZip = zip.folder("date")
@@ -25,11 +24,12 @@ import * as _zip from "/jszip/jszip.js"
 		anchor.click();
 		anchor.remove();
 		window.URL.revokeObjectURL(url)
-	})
+	});
 	document.getElementById("closeReadWrite").addEventListener("click",()=>{
 		document.querySelector("main#default").hidden = false ;
 		document.querySelector("main#readWrite").hidden = true ;
-	})
+	});
+	document.getElementById("clearPages").addEventListener("click",clearArt);
 })();
 
 // List of pages
@@ -78,7 +78,6 @@ async function readWrite() {
 		l.onsuccess = event=>{
 			console.log(event);
 		}
-		// console.log(l);
 	};
 }
 
@@ -112,6 +111,24 @@ function getArt(i) {
 		};
 		req.onerror = event=>{
 			reject(event)
+		}
+	});
+}
+function clearArt() {
+	var bib = "bib" + window.localStorage.getItem("lastBib") ;
+	return new Promise(function(resolve, reject) {
+		var req = db.transaction(bib,"readwrite").objectStore(bib).clear();
+		req.onsuccess = event=>{
+			resolve(req.result);
+			while (document.getElementById("listArt").children.length > 0) {
+				document.getElementById("listArt").children[0].remove();
+			}
+			listPages();
+			req = undefined ;
+		};
+		req.onerror = event=>{
+			reject(event)
+			req = undefined ;
 		}
 	});
 }
