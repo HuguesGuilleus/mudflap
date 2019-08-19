@@ -2,6 +2,13 @@
 // 2019 GUILLEUS Hugues <ghugues@netc.fr>
 // BSD 3-Clause "New" or "Revised" License
 
+// open save tab
+browser.browserAction.onClicked.addListener(()=>{
+	browser.tabs.create({
+		url:"/pages/save.html",
+	});
+});
+
 browser.tabs.onUpdated.addListener((id,_,tab)=>{
 	// if (tab.isArticle || tab.isInReaderMode) {
 	// 	browser.pageAction.show(id);

@@ -1,0 +1,29 @@
+<!--
+	Mudflap
+	2019 GUILLEUS Hugues <ghugues@netc.fr>
+	BSD 3-Clause "New" or "Revised" License
+-->
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<script src="/js/save.js" defer charset="utf-8" type="module"></script>
+		<title>Téléchargement</title>
+	</head>
+	<body>
+		<main id="default">
+			<button type="button" id="download">
+				Télécharge la bibliothèque
+			</button>
+			<ul id="listArt"></ul>
+		</main>
+		<main id="readWrite" hidden>
+			<div id="editorButtons">
+				<button type="button" id="closeReadWrite" style="color:red;">X</button>
+				<button type="button" id="editorSave">Enregistrement</button>
+				<button type="button" id="editorReset">Enregistrement</button>
+			</div>
+			<textarea id="editor" rows="20" cols="120"></textarea>
+		</main>
+	</body>
+</html>

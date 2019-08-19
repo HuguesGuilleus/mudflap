@@ -18,6 +18,12 @@
 		"pinned":true
 	},
 
+	"browser_action":{
+		"browser_style": true,
+		"default_icon":"/icons/icon.svg",
+		"default_title":"Télécharge les pages récupérées"
+	},
+
 	"permissions":[
 		"tabs",
 		"http://*/*",
